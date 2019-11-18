@@ -14,24 +14,27 @@ namespace GerenciadorDeTarefas.Infraestrutura.DAO
             this.session = session;
         }
 
-        public void Deletar(Tarefa IdTarefa)
+        public void Deletar(int IdTarefa)
         {
-            throw new System.NotImplementedException();
+            var tarefa = session.Get<Tarefa>(IdTarefa);
+            session.Delete(tarefa);
         }
 
         public IList<Tarefa> Listar()
         {
-            throw new System.NotImplementedException();
+            return session.QueryOver<Tarefa>().List();
         }
 
         public void Salvar(Tarefa NovaTarefa)
         {
-            throw new System.NotImplementedException();
+            session.SaveOrUpdate(NovaTarefa);
         }
 
-        public void Ticar(Tarefa IdTarefa)
+        public void Ticar(int IdTarefa)
         {
-            throw new System.NotImplementedException();
+            var tarefa = session.Get<Tarefa>(IdTarefa);
+            tarefa.Status = Dominio.Enums.StatusTarefa.CONCLUIDO;
+            session.SaveOrUpdate(tarefa);
         }
     }
 }

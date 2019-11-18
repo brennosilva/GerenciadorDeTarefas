@@ -13,9 +13,9 @@ namespace GerenciadorDeTarefas.Infraestrutura.DAO
             this.session = session;
         }
 
-        public Usuario BuscarPorID(string Id)
+        public Usuario BuscarPorID(int Id)
         {
-            throw new System.NotImplementedException();
+            return session.Get<Usuario>(Id);
         }
 
         public void MudarPermissao(Usuario Usuario)
@@ -25,7 +25,7 @@ namespace GerenciadorDeTarefas.Infraestrutura.DAO
 
         public void Salvar(Usuario NovoUsuario)
         {
-            throw new System.NotImplementedException();
+            session.SaveOrUpdate(NovoUsuario);
         }
     }
 }
