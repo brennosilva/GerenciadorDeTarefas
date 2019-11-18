@@ -8,7 +8,7 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerenciadorDeTarefas.Dominio", "GerenciadorDeTarefas.Dominio\GerenciadorDeTarefas.Dominio.csproj", "{0A62DD2E-BB16-4CF1-B4AB-91A4A5CD9CC8}"
 EndProject
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerenciadorDeTarefasAPI", "GerenciadorDeTarefas\GerenciadorDeTarefasAPI.csproj", "{85F6D742-AF76-45A8-8142-2EC222AF2DFE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerenciadorDeTarefasAPI", "GerenciadorDeTarefasAPI\GerenciadorDeTarefasAPI.csproj", "{85F6D742-AF76-45A8-8142-2EC222AF2DFE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
