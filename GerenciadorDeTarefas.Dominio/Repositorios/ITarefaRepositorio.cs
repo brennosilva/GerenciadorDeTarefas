@@ -6,9 +6,9 @@ namespace GerenciadorDeTarefas.Dominio.Repositorios
 {
     public interface ITarefaRepositorio
     {
-         void Salvar(Tarefa NovaTarefa);     
-         void Deletar(int IdTarefa);
-         void Ticar(int IdTarefa);
-         IList<Tarefa> Listar();
+        void Salvar(Tarefa NovaTarefa);
+        void Deletar(int IdTarefa);
+        void Ticar(int IdTarefa);
+        IList<Tarefa> Listar();
     }
 }
