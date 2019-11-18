@@ -8,6 +8,7 @@ namespace GerenciadorDeTarefas.Dominio.Repositorios
     {
         Usuario BuscarPorID(int Id);
         void Salvar(Usuario NovoUsuario);
+        void Logar(Usuario Usuario);
         void MudarPermissao(int IdUsuario, Permissao NovaPermissao);
     }
 }
