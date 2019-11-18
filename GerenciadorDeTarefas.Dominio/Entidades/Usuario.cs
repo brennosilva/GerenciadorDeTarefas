@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using GerenciadorDeTarefas.Dominio.Enums;
 
 namespace GerenciadorDeTarefas.Dominio.Entidades
@@ -9,5 +10,6 @@ namespace GerenciadorDeTarefas.Dominio.Entidades
         public virtual string Email { get; set; } 
         public virtual Permissao Permissao { get; set; } 
         public virtual string Senha { get; set; }         
+        public virtual IList<Tarefa> Tarefas { get; set; }    
     }
 }
