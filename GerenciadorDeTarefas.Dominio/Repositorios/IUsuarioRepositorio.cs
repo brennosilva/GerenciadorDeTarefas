@@ -1,5 +1,6 @@
 using System;
 using GerenciadorDeTarefas.Dominio.Entidades;
+using GerenciadorDeTarefas.Dominio.Enums;
 
 namespace GerenciadorDeTarefas.Dominio.Repositorios
 {
@@ -7,6 +8,6 @@ namespace GerenciadorDeTarefas.Dominio.Repositorios
     {
         Usuario BuscarPorID(int Id);
         void Salvar(Usuario NovoUsuario);
-        void MudarPermissao(Usuario Usuario);
+        void MudarPermissao(int IdUsuario, Permissao NovaPermissao);
     }
 }

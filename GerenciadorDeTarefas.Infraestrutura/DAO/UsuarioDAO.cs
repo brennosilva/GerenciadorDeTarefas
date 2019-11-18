@@ -1,4 +1,5 @@
 using GerenciadorDeTarefas.Dominio.Entidades;
+using GerenciadorDeTarefas.Dominio.Enums;
 using GerenciadorDeTarefas.Dominio.Repositorios;
 using NHibernate;
 
@@ -16,11 +17,13 @@ namespace GerenciadorDeTarefas.Infraestrutura.DAO
         public Usuario BuscarPorID(int Id)
         {
             return session.Get<Usuario>(Id);
-        }
+        }       
 
-        public void MudarPermissao(Usuario Usuario)
+        public void MudarPermissao(int IdUsuario, Permissao NovaPermissao)
         {
-            throw new System.NotImplementedException();
+            var usuario = session.Get<Usuario>(IdUsuario);
+            usuario.Permissao = NovaPermissao;
+            session.SaveOrUpdate(usuario);
         }
 
         public void Salvar(Usuario NovoUsuario)
