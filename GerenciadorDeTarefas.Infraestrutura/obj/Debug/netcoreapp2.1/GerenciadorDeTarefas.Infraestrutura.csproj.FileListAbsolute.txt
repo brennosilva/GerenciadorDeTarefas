@@ -10,3 +10,5 @@ C:\Repositorio\GerenciadorDeTarefas\GerenciadorDeTarefas\GerenciadorDeTarefas.In
 C:\Repositorio\GerenciadorDeTarefas\GerenciadorDeTarefas\GerenciadorDeTarefas.Infraestrutura\obj\Debug\netcoreapp2.1\GerenciadorDeTarefas.Infraestrutura.csproj.CopyComplete
 C:\Repositorio\GerenciadorDeTarefas\GerenciadorDeTarefas\GerenciadorDeTarefas.Infraestrutura\obj\Debug\netcoreapp2.1\GerenciadorDeTarefas.Infraestrutura.dll
 C:\Repositorio\GerenciadorDeTarefas\GerenciadorDeTarefas\GerenciadorDeTarefas.Infraestrutura\obj\Debug\netcoreapp2.1\GerenciadorDeTarefas.Infraestrutura.pdb
+C:\Repositorio\GerenciadorDeTarefas\GerenciadorDeTarefas\GerenciadorDeTarefas.Infraestrutura\bin\Debug\netcoreapp2.1\GerenciadorDeTarefas.Infraestrutura.runtimeconfig.json
+C:\Repositorio\GerenciadorDeTarefas\GerenciadorDeTarefas\GerenciadorDeTarefas.Infraestrutura\bin\Debug\netcoreapp2.1\GerenciadorDeTarefas.Infraestrutura.runtimeconfig.dev.json
