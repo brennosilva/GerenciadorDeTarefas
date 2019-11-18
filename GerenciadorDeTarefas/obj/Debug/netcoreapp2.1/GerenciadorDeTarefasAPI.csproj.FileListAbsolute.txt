@@ -17,3 +17,5 @@ C:\Repositorio\GerenciadorDeTarefas\GerenciadorDeTarefas\GerenciadorDeTarefasAPI
 C:\Repositorio\GerenciadorDeTarefas\GerenciadorDeTarefas\GerenciadorDeTarefasAPI\obj\Debug\netcoreapp2.1\GerenciadorDeTarefasAPI.csproj.CopyComplete
 C:\Repositorio\GerenciadorDeTarefas\GerenciadorDeTarefas\GerenciadorDeTarefasAPI\obj\Debug\netcoreapp2.1\GerenciadorDeTarefasAPI.dll
 C:\Repositorio\GerenciadorDeTarefas\GerenciadorDeTarefas\GerenciadorDeTarefasAPI\obj\Debug\netcoreapp2.1\GerenciadorDeTarefasAPI.pdb
+C:\Repositorio\GerenciadorDeTarefas\GerenciadorDeTarefas\GerenciadorDeTarefas\obj\Debug\netcoreapp2.1\GerenciadorDeTarefasAPI.dll
+C:\Repositorio\GerenciadorDeTarefas\GerenciadorDeTarefas\GerenciadorDeTarefas\obj\Debug\netcoreapp2.1\GerenciadorDeTarefasAPI.pdb
