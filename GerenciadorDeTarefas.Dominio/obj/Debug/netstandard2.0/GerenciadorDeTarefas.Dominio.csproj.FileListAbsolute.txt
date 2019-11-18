@@ -1,9 +1,0 @@
-C:\Repositorio\GerenciadorDeTarefas\GerenciadorDeTarefas\GerenciadorDeTarefas.Dominio\bin\Debug\netstandard2.0\GerenciadorDeTarefas.Dominio.deps.json
-C:\Repositorio\GerenciadorDeTarefas\GerenciadorDeTarefas\GerenciadorDeTarefas.Dominio\bin\Debug\netstandard2.0\GerenciadorDeTarefas.Dominio.dll
-C:\Repositorio\GerenciadorDeTarefas\GerenciadorDeTarefas\GerenciadorDeTarefas.Dominio\bin\Debug\netstandard2.0\GerenciadorDeTarefas.Dominio.pdb
-C:\Repositorio\GerenciadorDeTarefas\GerenciadorDeTarefas\GerenciadorDeTarefas.Dominio\obj\Debug\netstandard2.0\GerenciadorDeTarefas.Dominio.csprojAssemblyReference.cache
-C:\Repositorio\GerenciadorDeTarefas\GerenciadorDeTarefas\GerenciadorDeTarefas.Dominio\obj\Debug\netstandard2.0\GerenciadorDeTarefas.Dominio.csproj.CoreCompileInputs.cache
-C:\Repositorio\GerenciadorDeTarefas\GerenciadorDeTarefas\GerenciadorDeTarefas.Dominio\obj\Debug\netstandard2.0\GerenciadorDeTarefas.Dominio.AssemblyInfoInputs.cache
-C:\Repositorio\GerenciadorDeTarefas\GerenciadorDeTarefas\GerenciadorDeTarefas.Dominio\obj\Debug\netstandard2.0\GerenciadorDeTarefas.Dominio.AssemblyInfo.cs
-C:\Repositorio\GerenciadorDeTarefas\GerenciadorDeTarefas\GerenciadorDeTarefas.Dominio\obj\Debug\netstandard2.0\GerenciadorDeTarefas.Dominio.dll
-C:\Repositorio\GerenciadorDeTarefas\GerenciadorDeTarefas\GerenciadorDeTarefas.Dominio\obj\Debug\netstandard2.0\GerenciadorDeTarefas.Dominio.pdb
