@@ -1,0 +1,9 @@
+C:\Repositorio\GerenciadorDeTarefas\GerenciadorDeTarefas\GerenciadorDeTarefas.Dominio\bin\Debug\netcoreapp2.1\GerenciadorDeTarefas.Dominio.deps.json
+C:\Repositorio\GerenciadorDeTarefas\GerenciadorDeTarefas\GerenciadorDeTarefas.Dominio\bin\Debug\netcoreapp2.1\GerenciadorDeTarefas.Dominio.dll
+C:\Repositorio\GerenciadorDeTarefas\GerenciadorDeTarefas\GerenciadorDeTarefas.Dominio\bin\Debug\netcoreapp2.1\GerenciadorDeTarefas.Dominio.pdb
+C:\Repositorio\GerenciadorDeTarefas\GerenciadorDeTarefas\GerenciadorDeTarefas.Dominio\obj\Debug\netcoreapp2.1\GerenciadorDeTarefas.Dominio.csprojAssemblyReference.cache
+C:\Repositorio\GerenciadorDeTarefas\GerenciadorDeTarefas\GerenciadorDeTarefas.Dominio\obj\Debug\netcoreapp2.1\GerenciadorDeTarefas.Dominio.csproj.CoreCompileInputs.cache
+C:\Repositorio\GerenciadorDeTarefas\GerenciadorDeTarefas\GerenciadorDeTarefas.Dominio\obj\Debug\netcoreapp2.1\GerenciadorDeTarefas.Dominio.AssemblyInfoInputs.cache
+C:\Repositorio\GerenciadorDeTarefas\GerenciadorDeTarefas\GerenciadorDeTarefas.Dominio\obj\Debug\netcoreapp2.1\GerenciadorDeTarefas.Dominio.AssemblyInfo.cs
+C:\Repositorio\GerenciadorDeTarefas\GerenciadorDeTarefas\GerenciadorDeTarefas.Dominio\obj\Debug\netcoreapp2.1\GerenciadorDeTarefas.Dominio.dll
+C:\Repositorio\GerenciadorDeTarefas\GerenciadorDeTarefas\GerenciadorDeTarefas.Dominio\obj\Debug\netcoreapp2.1\GerenciadorDeTarefas.Dominio.pdb
