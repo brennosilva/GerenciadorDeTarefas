@@ -9,7 +9,7 @@ namespace GerenciadorDeTarefas.Infraestrutura.Mapeamento
         public TarefaMap()
         {
             Table("TAREFA");
-            Id(t => t.Id).Column("ID_TAREFA");
+            Id(t => t.Id).Column("ID_TAREFA").GeneratedBy.Sequence("SEQ_ID_CATEGORIA");
             Map(t => t.Nome).Column("NOME");
             Map(t => t.Status).Column("STATUS").CustomType<StatusTarefa>();
 

@@ -24,9 +24,9 @@ namespace GerenciadorDeTarefas.Dominio.Serviços
             repositorio.Ticar(IdTarefa);
         }
 
-        public IList<Tarefa> ListarTarefas()
+        public IList<Tarefa> ListarTarefas(int idUsuario)
         {
-            return repositorio.Listar();
+            return repositorio.ListarTarefasUsuario(idUsuario);
         }
 
 

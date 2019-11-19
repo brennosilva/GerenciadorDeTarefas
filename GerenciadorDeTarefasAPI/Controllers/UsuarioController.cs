@@ -2,6 +2,7 @@ using GerenciadorDeTarefas.Dominio.Repositorios;
 using GerenciadorDeTarefas.Dominio.Serviços;
 using GerenciadorDeTarefas.Infraestrutura.DAO;
 using GerenciadorDeTarefas.Infraestrutura.NHibernate;
+using GerenciadorDeTarefasAPI.DTO;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
@@ -22,9 +23,9 @@ namespace GerenciadorDeTarefas.Controllers
                 IUsuarioRepositorio usuarioRepositorio = new UsuarioDAO(NhibernateHelper.OpenSession(configuration));
                 UsuarioServico usuarioServico = new UsuarioServico(usuarioRepositorio);
                 var usuario = usuarioServico.BuscarUsuarioPorId(id);
-
+                var dto = CadastrarUsuarioDTO.ParseToDTO(usuario);
                 // mudar para dto
-                return new JsonResult(usuario);
+                return new JsonResult(dto);
             }
             catch (System.Exception)
             {
@@ -33,13 +34,14 @@ namespace GerenciadorDeTarefas.Controllers
         }
 
         [HttpPost("NovoUsuario")]
-        public IActionResult NovoUsuario()
+        public IActionResult NovoUsuario(CadastrarUsuarioDTO novoUsuario)
         {
             try
             {
                 IUsuarioRepositorio usuarioRepositorio = new UsuarioDAO(NhibernateHelper.OpenSession(configuration));
                 UsuarioServico usuarioServico = new UsuarioServico(usuarioRepositorio);
-                // usuarioServico.Salvar();
+                var entidade = CadastrarUsuarioDTO.ParseToEntidade(novoUsuario);
+                usuarioServico.Salvar(entidade);
                 return Ok();
             }
             catch (System.Exception)

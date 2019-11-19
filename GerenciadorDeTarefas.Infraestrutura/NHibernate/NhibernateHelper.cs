@@ -10,7 +10,7 @@ namespace GerenciadorDeTarefas.Infraestrutura.NHibernate
     {
         public static ISession OpenSession(IConfiguration configuration)
         {
-            var connectionString = configuration.GetConnectionString("Plano");
+            var connectionString = configuration.GetConnectionString("TAREFA");
             ISessionFactory sessionFactory = Fluently.Configure()
                 .Database(OracleManagedDataClientConfiguration.Oracle10.ConnectionString(connectionString))
                 .Mappings(m => m.FluentMappings.AddFromAssemblyOf<TarefaMap>())

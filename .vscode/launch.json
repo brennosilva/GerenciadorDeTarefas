@@ -9,9 +9,9 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/GerenciadorDeTarefas/bin/Debug/netcoreapp2.1/GerenciadorDeTarefasAPI.dll",
+            "program": "${workspaceFolder}/GerenciadorDeTarefasAPI/bin/Debug/netcoreapp2.1/GerenciadorDeTarefasAPI.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/GerenciadorDeTarefas",
+            "cwd": "${workspaceFolder}/GerenciadorDeTarefasAPI",
             "stopAtEntry": false,
             "serverReadyAction": {
                 "action": "openExternally",

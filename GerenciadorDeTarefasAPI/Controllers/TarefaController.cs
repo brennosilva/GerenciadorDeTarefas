@@ -1,7 +1,9 @@
+using GerenciadorDeTarefas.Dominio.Entidades;
 using GerenciadorDeTarefas.Dominio.Repositorios;
 using GerenciadorDeTarefas.Dominio.Serviços;
 using GerenciadorDeTarefas.Infraestrutura.DAO;
 using GerenciadorDeTarefas.Infraestrutura.NHibernate;
+using GerenciadorDeTarefasAPI.DTO;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
@@ -16,14 +18,15 @@ namespace GerenciadorDeTarefas.Controllers
 
 
         [HttpGet("Listar")]
-        public IActionResult Listar()
+        public IActionResult Listar(int idUsuario)
         {
             try
             {
                 ITarefaRepositorio tarefaRepositorio = new TarefaDAO(NhibernateHelper.OpenSession(configuration));
                 TarefaServico tarefaServico = new TarefaServico(tarefaRepositorio);
-                var tarefas = tarefaServico.ListarTarefas();
-                return new JsonResult(tarefas);
+                var tarefas = tarefaServico.ListarTarefas(idUsuario);
+                var dto = TarefaDTO.parseDTO(tarefas);
+                return new JsonResult(dto);
             }
             catch (System.Exception)
             {
@@ -32,13 +35,14 @@ namespace GerenciadorDeTarefas.Controllers
         }
 
         [HttpPost("NovaTarefa")]
-        public IActionResult Salvar()
+        public IActionResult Salvar(TarefaDTO tarefaDTO) 
         {
             try
             {
                 ITarefaRepositorio tarefaRepositorio = new TarefaDAO(NhibernateHelper.OpenSession(configuration));
                 TarefaServico tarefaServico = new TarefaServico(tarefaRepositorio);
-                // tarefaServico.Salvar();
+                Tarefa tarefa = new Tarefa(){Nome = tarefaDTO.Nome,Usuario = new Usuario{Id = tarefaDTO.IdUsuario}};
+                tarefaServico.Salvar(tarefa);
                 return Ok();
             }
             catch (System.Exception)

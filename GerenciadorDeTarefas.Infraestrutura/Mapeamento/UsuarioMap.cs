@@ -9,7 +9,7 @@ namespace GerenciadorDeTarefas.Infraestrutura.Mapeamento
         public UsuarioMap()
         {
             Table("USUARIO");
-            Id(u => u.Id).Column("ID_USUARIO");
+            Id(u => u.Id).Column("ID_USUARIO").GeneratedBy.Sequence("SEQ_ID_CATEGORIA");
             Map(u => u.Nome).Column("NOME");
             Map(u => u.Email).Column("EMAIL");
             Map(u => u.Permissao).Column("PERMISSAO").CustomType<Permissao>();
