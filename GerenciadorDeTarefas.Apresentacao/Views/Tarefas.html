@@ -167,7 +167,7 @@
         $("#novaTarefa").submit(function (e) {
             var form = $("#novaTarefa");
             var usuarioLogado = 1;
-            $.post("http://localhost:5000/api/Tarefa/NovaTarefa", { nome: "John", idUsuario: usuarioLogado })
+            $.post("http://localhost:5000/api/Tarefa/NovaTarefa", { nome: $("#nomeTarefa").val() , idUsuario: usuarioLogado })
                 .done(function (data) {
                     $('#modalTarefa').modal('hide')
                     swal({
@@ -176,11 +176,15 @@
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
                         confirmButtonText: 'Ok'
-                    }).then(function (result) {                        
+                    }).then(function (result) {
                         listarTarefas();
-                    })                    
+                    })
                 });
             e.preventDefault();
+        })
+
+        $('#modalTarefa').on('hidden.bs.modal', function (e) {
+            $("#nomeTarefa").val("");
         })
 
 
