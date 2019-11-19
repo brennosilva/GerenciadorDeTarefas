@@ -12,6 +12,7 @@ namespace GerenciadorDeTarefas.Dominio.Serviços
         public Usuario BuscarUsuarioPorId(int id)
         {
             var usuario = repositorio.BuscarPorID(id);
+            if(usuario == null) throw new DominioException("Usuário não encontrado.");
             return usuario;
         }
 
@@ -23,6 +24,14 @@ namespace GerenciadorDeTarefas.Dominio.Serviços
         public void MudarPermissao(int IdUsuario, Permissao NovaPermissao)
         {
             repositorio.MudarPermissao(IdUsuario,NovaPermissao);           
+        }
+
+        public bool Logar(Usuario usuarioLogin)
+        {
+            var usuario = repositorio.BuscarPorUsuario(usuarioLogin.Nome);
+            if(usuario == null) throw new DominioException("Usuário ou senha incorreto!");
+            if(usuario.Senha != usuarioLogin.Senha) throw new DominioException("Usuário ou senha incorreto!");
+            return true;
         }
     }
 }

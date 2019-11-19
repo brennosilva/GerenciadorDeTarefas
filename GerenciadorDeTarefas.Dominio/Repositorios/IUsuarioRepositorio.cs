@@ -7,8 +7,8 @@ namespace GerenciadorDeTarefas.Dominio.Repositorios
     public interface IUsuarioRepositorio
     {
         Usuario BuscarPorID(int Id);
+        Usuario BuscarPorUsuario(string Nome);
         void Salvar(Usuario NovoUsuario);
-        void Logar(Usuario Usuario);
         void MudarPermissao(int IdUsuario, Permissao NovaPermissao);
     }
 }

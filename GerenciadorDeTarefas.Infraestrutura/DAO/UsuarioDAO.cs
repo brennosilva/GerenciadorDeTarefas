@@ -19,10 +19,10 @@ namespace GerenciadorDeTarefas.Infraestrutura.DAO
             return session.Get<Usuario>(Id);
         }
 
-        public void Logar(Usuario Usuario)
+        public Usuario BuscarPorUsuario(string Nome)
         {
-            throw new System.NotImplementedException();
-        }
+            return session.QueryOver<Usuario>().Where(x=> x.Nome == Nome).SingleOrDefault();
+        }    
 
         public void MudarPermissao(int IdUsuario, Permissao NovaPermissao)
         {
