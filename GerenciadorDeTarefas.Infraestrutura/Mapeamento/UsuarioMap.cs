@@ -8,8 +8,8 @@ namespace GerenciadorDeTarefas.Infraestrutura.Mapeamento
     {
         public UsuarioMap()
         {
-            Table("");
-            Id(u => u.Id).Column("ID");
+            Table("USUARIO");
+            Id(u => u.Id).Column("ID_USUARIO");
             Map(u => u.Nome).Column("NOME");
             Map(u => u.Email).Column("EMAIL");
             Map(u => u.Permissao).Column("PERMISSAO").CustomType<Permissao>();
