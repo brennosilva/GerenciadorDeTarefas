@@ -39,7 +39,7 @@ namespace GerenciadorDeTarefas.Controllers
         }
 
         [HttpPost("NovoUsuario")]
-        public IActionResult NovoUsuario(CadastrarUsuarioDTO novoUsuario)
+        public IActionResult NovoUsuario([FromForm]CadastrarUsuarioDTO novoUsuario)
         {
             try
             {
@@ -60,7 +60,7 @@ namespace GerenciadorDeTarefas.Controllers
         }
 
         [HttpPost("Logar")]
-        public IActionResult Logar(LoginDTO login)
+        public IActionResult Logar([FromForm]LoginDTO login)
         {
             try
             {
@@ -75,10 +75,12 @@ namespace GerenciadorDeTarefas.Controllers
             }
             catch (DominioException e)
             {
+                HttpContext.Response.StatusCode = 401;
                 return new JsonResult(e.Message);
             }
             catch (System.Exception)
             {
+                HttpContext.Response.StatusCode = 401;
                 return new JsonResult("Ocorreu um erro desconhecido!");
             }
         }

@@ -7,24 +7,84 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
     <title>Tarefas</title>
 </head>
 
 <body>
+    <!-- Modal -->
+    <div class="modal fade" id="modalTarefa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Nova Tarefa</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="novaTarefa">
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <label for="nomeTarefa">Nome da Tarefa</label>
+                            <input type="text" class="form-control" id="nomeTarefa" placeholder="Nome da Tarefa">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <input type="submit" class="btn btn-dark" value="Salvar">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalEditarTarefa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Editar Tarefa</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="formEditarTarefa">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="nomeTarefa">Nome da Tarefa</label>
+                            <input type="text" class="form-control" id="nomeNovaTarefa" placeholder="Nome da Tarefa">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="submit" class="btn btn-dark">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <div class="row">
             <div class="col-sm-9 col-md-7 col-lg-12 mx-auto">
                 <div class="card card-signin my-5">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Tarefas</h5>
+                        <h4 class="card-title text-center">Tarefas</h4>
                         <hr>
+                        <button class="btn btn-dark" id="btnNovaTarefa" data-toggle="modal"
+                            data-target="#modalTarefa">Nova Tarefa</button>
+                        <a class="btn btn-dark" href="Cadastro.html">Novo Usuário</a>
+                        <br />
+                        <br />
                         <table class="table" id="tableTarefas">
                             <thead>
                                 <th>id</th>
                                 <th>Título</th>
-                                <th>Opções</th>
+                                <th>Ações</th>
                             </thead>
                             <tbody>
 
@@ -39,9 +99,8 @@
     </div>
 
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
         integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
@@ -50,12 +109,83 @@
         crossorigin="anonymous"></script>
     <script type="text/javascript" charset="utf8"
         src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
     <script>
         $(document).ready(function () {
-            $('#tableTarefas').DataTable();
+            desenharTabela();
+
         });
+
+        function desenharTabela() {
+            tabela = $("#tableTarefas").DataTable({
+                "language": {
+                    "url": "http://cdn.datatables.net/plug-ins/1.10.20/i18n/Portuguese-Brasil.json"
+                },
+                "aoColumns": [{
+                    "sName": "id",
+                    "bVisible": false
+                },
+                {
+                    "sName": "nome"
+                },
+                {
+                    "sName": "acoes"
+                }]
+            });
+            listarTarefas();
+
+        }
+
+        function listarTarefas() {
+            var usuarioLogado = 1
+            $.ajax({
+                processData: true,
+                type: 'GET',
+                url: 'http://localhost:5000/api/Tarefa/Listar?idUsuario=' + usuarioLogado,
+                async: true,
+                cache: false,
+                dataType: 'json',
+                success: function (data) {
+                    tabela.clear().draw();
+
+                    $.each(data, function (i, item) {
+                        tabela.row.add([
+                            item.id,
+                            item.nome,
+                            '<button class="btn btn-dark" data-toggle="modal" data-target="#modalEditarTarefa">Editar</button> <button class="btn btn-danger">Excluir</button>'
+                        ]).draw(false);
+                    });
+                },
+                error: function () {
+                    swal("Ocorreu um erro", "Ocorreu um erro ao tentar carregar os profissionais", "error");
+                }
+            });
+        }
+
+        $("#novaTarefa").submit(function (e) {
+            var form = $("#novaTarefa");
+            var usuarioLogado = 1;
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:5000/api/Tarefa/NovaTarefa",
+                data: {
+                    "nome" : $("#nomeNovaTarefa").val,
+                    "idUsuario": usuarioLogado
+                },
+                success: function (data) {
+                  
+                },
+                error: function (data) {
+                    swal("Ocorreu um erro", data.responseJSON, "error");
+                }
+            });
+            e.preventDefault();
+        })
+
+
+
     </script>
 </body>
 

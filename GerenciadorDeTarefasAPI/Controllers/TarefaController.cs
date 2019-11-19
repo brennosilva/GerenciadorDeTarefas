@@ -35,7 +35,7 @@ namespace GerenciadorDeTarefas.Controllers
         }
 
         [HttpPost("NovaTarefa")]
-        public IActionResult Salvar(TarefaDTO tarefaDTO) 
+        public IActionResult Salvar([FromForm]TarefaDTO tarefaDTO) 
         {
             try
             {
