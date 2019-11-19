@@ -167,20 +167,19 @@
         $("#novaTarefa").submit(function (e) {
             var form = $("#novaTarefa");
             var usuarioLogado = 1;
-            $.ajax({
-                type: "POST",
-                url: "http://localhost:5000/api/Tarefa/NovaTarefa",
-                data: {
-                    "nome" : $("#nomeNovaTarefa").val,
-                    "idUsuario": usuarioLogado
-                },
-                success: function (data) {
-                  
-                },
-                error: function (data) {
-                    swal("Ocorreu um erro", data.responseJSON, "error");
-                }
-            });
+            $.post("http://localhost:5000/api/Tarefa/NovaTarefa", { nome: "John", idUsuario: usuarioLogado })
+                .done(function (data) {
+                    $('#modalTarefa').modal('hide')
+                    swal({
+                        title: 'Tarefa criada com sucesso!',
+                        icon: 'success',
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Ok'
+                    }).then(function (result) {                        
+                        listarTarefas();
+                    })                    
+                });
             e.preventDefault();
         })
 
