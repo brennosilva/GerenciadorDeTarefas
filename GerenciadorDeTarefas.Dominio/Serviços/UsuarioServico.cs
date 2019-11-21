@@ -26,12 +26,12 @@ namespace GerenciadorDeTarefas.Dominio.Serviços
             repositorio.MudarPermissao(IdUsuario,NovaPermissao);           
         }
 
-        public bool Logar(Usuario usuarioLogin)
+        public Usuario Logar(Usuario usuarioLogin)
         {
             var usuario = repositorio.BuscarPorUsuario(usuarioLogin.Nome);
             if(usuario == null) throw new DominioException("Usuário ou senha incorreto!");
             if(usuario.Senha != usuarioLogin.Senha) throw new DominioException("Usuário ou senha incorreto!");
-            return true;
+            return usuario;
         }
     }
 }

@@ -1,6 +1,5 @@
-
-<body>
-    <div class="container">
+﻿@page
+ <div class="container">
         <div class="row">
             <div class="col-sm-9 col-md-7 col-lg-6 mx-auto">
                 <div class="card card-signin my-5">
@@ -31,7 +30,7 @@
     </div>
 
     </div>
-
+@section Scripts{
     <script>
         $("#formLogin").submit(function (e) {
             var form = $("#formLogin");
@@ -40,9 +39,9 @@
                 url: "http://localhost:5000/api/Usuario/Logar",
                 data: form.serialize(),
                 success: function (data) {    
-                    document.cookie = "permissao=" + data.id;               
-                    document.cookie = "username=" + data.usuario;               
-                    window.location.href = "Tarefas.html";
+                    document.cookie = "permissao=" + data.permissao;               
+                    document.cookie = "username=" + data.idUsuario;               
+                    window.location.href = "Tarefas";
 
                 },
                 error: function (data) {
@@ -53,6 +52,4 @@
         })
 
     </script>
-</body>
-
-</html>
+}

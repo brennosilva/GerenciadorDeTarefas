@@ -16,6 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\GerenciadorDeTarefas.Dominio\GerenciadorDeTarefas.Dominio.csproj" />
     <ProjectReference Include="..\GerenciadorDeTarefas.Infraestrutura\GerenciadorDeTarefas.Infraestrutura.csproj" />
+    <ProjectReference Include="..\GerenciadorDeTarefas.Apresentacao\GerenciadorDeTarefas.Apresentacao.csproj" />
   </ItemGroup>
 
 </Project>

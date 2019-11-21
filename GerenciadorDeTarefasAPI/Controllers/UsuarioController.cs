@@ -66,11 +66,10 @@ namespace GerenciadorDeTarefas.Controllers
             {
                 IUsuarioRepositorio usuarioRepositorio = new UsuarioDAO(NhibernateHelper.OpenSession(configuration));
                 UsuarioServico usuarioServico = new UsuarioServico(usuarioRepositorio);                
-                var resultado = usuarioServico.Logar(new Usuario(){Nome = login.Usuario, Senha = login.Senha});
-
-                if(resultado) return Ok();
-
-                return Unauthorized();
+                var resultado = usuarioServico.Logar(new Usuario(){Nome = login.Usuario, Senha = login.Senha});                
+                var user = new LoginDTO(){Permissao = (int)resultado.Permissao , IdUsuario = resultado.Id};   
+                             
+                return new JsonResult(user);
                     
             }
             catch (DominioException e)
