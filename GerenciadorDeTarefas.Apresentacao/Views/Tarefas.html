@@ -84,6 +84,7 @@
                         <table class="table" id="tableTarefas">
                             <thead>
                                 <th>id</th>
+                                <th>status</th>
                                 <th class="text-center">Concluído</th>
                                 <th>Título</th>
                                 <th>Ações</th>
@@ -130,6 +131,10 @@
                     "bVisible": false
                 },
                 {
+                    "sName": "status",
+                    "bVisible": false
+                },
+                {
                     "className": "dt-body-center",
                     "sName": "ticar"
                 },
@@ -138,7 +143,17 @@
                 },
                 {
                     "sName": "acoes"
-                }]
+                }],
+                "rowCallback": function (row, data, index) {
+                    if (data[1] == 1) {
+
+                        $(row).addClass('bg-secondary');
+                    }
+
+
+
+
+                }
             });
             listarTarefas();
 
@@ -159,17 +174,20 @@
                     $.each(data, function (i, item) {
                         if (item.status == 1) {
                             var checkbox = '<input type="checkbox" class="center check" checked="true" value="" idTarefa="' + item.id + '">';
-                           
-                        }else{
+                            $(tabela.row).addClass('bg-dark');
+                        } else {
                             var checkbox = '<input type="checkbox" class="center check" value="" idTarefa="' + item.id + '">';
                         }
 
                         tabela.row.add([
                             item.id,
+                            item.status,
                             checkbox,
                             item.nome,
                             '<button class="btn btn-dark btnEditar" idTarefa="' + item.id + '" nome="' + item.nome + '" data-toggle="modal"  data-target="#modalEditarTarefa">Editar</button> <a href="#" link="http://localhost:5000/api/Tarefa/Deletar?id=' + item.id + '" class="btn btn-danger btnExcluir">Excluir</a>'
                         ]).draw(false);
+
+
                     });
                 },
                 error: function () {
