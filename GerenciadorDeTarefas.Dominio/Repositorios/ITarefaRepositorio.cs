@@ -10,6 +10,7 @@ namespace GerenciadorDeTarefas.Dominio.Repositorios
         void Editar(Tarefa NovaTarefa);
         void Deletar(int IdTarefa);
         void Ticar(int IdTarefa);
+        void RemoveTicar(int IdTarefa);
         IList<Tarefa> ListarTarefasUsuario(int idUsuario);
     }
 }

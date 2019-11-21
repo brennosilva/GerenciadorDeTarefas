@@ -36,6 +36,15 @@ namespace GerenciadorDeTarefas.Infraestrutura.DAO
             return session.QueryOver<Tarefa>().Where(x => x.Usuario.Id == idUsuario).List();
         }
 
+        public void RemoveTicar(int IdTarefa)
+        {
+            var tarefa = session.Get<Tarefa>(IdTarefa);
+            session.Transaction.Begin();
+            tarefa.Status = Dominio.Enums.StatusTarefa.PENDENTE;
+            session.SaveOrUpdate(tarefa);
+            session.Transaction.Commit();
+        }
+
         public void Salvar(Tarefa NovaTarefa)
         {
             session.Transaction.Begin();

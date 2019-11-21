@@ -157,16 +157,23 @@
                     tabela.clear().draw();
 
                     $.each(data, function (i, item) {
+                        if (item.status == 1) {
+                            var checkbox = '<input type="checkbox" class="center check" checked="true" value="" idTarefa="' + item.id + '">';
+                           
+                        }else{
+                            var checkbox = '<input type="checkbox" class="center check" value="" idTarefa="' + item.id + '">';
+                        }
+
                         tabela.row.add([
                             item.id,
-                            '<input type="checkbox" name="vehicle1" class="center" value="Bike">',
+                            checkbox,
                             item.nome,
                             '<button class="btn btn-dark btnEditar" idTarefa="' + item.id + '" nome="' + item.nome + '" data-toggle="modal"  data-target="#modalEditarTarefa">Editar</button> <a href="#" link="http://localhost:5000/api/Tarefa/Deletar?id=' + item.id + '" class="btn btn-danger btnExcluir">Excluir</a>'
                         ]).draw(false);
                     });
                 },
                 error: function () {
-                    swal("Ocorreu um erro", "Ocorreu um erro ao tentar carregar os profissionais", "error");
+                    swal("Ocorreu um erro", "Ocorreu um erro ao tentar carregar as Tarefas", "error");
                 }
             });
         }
@@ -225,14 +232,14 @@
         });
 
         $(document).on('click', '.btnEditar', function (e) {
-            var nome = $(this).attr("nome");            
-            var idTarefa = $(this).attr("idTarefa");            
+            var nome = $(this).attr("nome");
+            var idTarefa = $(this).attr("idTarefa");
             $("#nomeNovaTarefa").val(nome);
             $("#idTarefa").val(idTarefa);
         });
 
 
-        $("#formEditarTarefa").submit(function (e) {           
+        $("#formEditarTarefa").submit(function (e) {
             var idTarefaEditar = $("#idTarefa").val();
             $.post("http://localhost:5000/api/Tarefa/Editar", { nome: $("#nomeNovaTarefa").val(), id: idTarefaEditar })
                 .done(function (data) {
@@ -249,6 +256,27 @@
                 });
             e.preventDefault();
         })
+
+
+
+        $(document).on('click', '.check', function (e) {
+            var thisCheck = $(this);
+            var idTarefa = $(this).attr("idTarefa");
+            if (thisCheck.is(':checked')) {
+                $.get("http://localhost:5000/api/Tarefa/Ticar", { id: idTarefa })
+                    .done(function (data) {
+                        listarTarefas();
+                    });
+            } else {
+                $.get("http://localhost:5000/api/Tarefa/RemoveTicar", { id: idTarefa })
+                    .done(function (data) {
+                        listarTarefas();
+                    });
+            }
+        });
+
+
+
 
 
 

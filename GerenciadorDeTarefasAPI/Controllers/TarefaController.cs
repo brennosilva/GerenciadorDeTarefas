@@ -104,5 +104,22 @@ namespace GerenciadorDeTarefas.Controllers
                 return new JsonResult("Ocorreu um erro desconhecido!");
             }
         }
+
+        [HttpGet("RemoveTicar")]
+        public IActionResult RemoveTicar(int id)
+        {
+            try
+            {
+                ITarefaRepositorio tarefaRepositorio = new TarefaDAO(NhibernateHelper.OpenSession(configuration));
+                TarefaServico tarefaServico = new TarefaServico(tarefaRepositorio);
+                tarefaServico.RemoveTicar(id);
+                return Ok();
+            }
+            catch (System.Exception)
+            {
+                HttpContext.Response.StatusCode = 500;
+                return new JsonResult("Ocorreu um erro desconhecido!");
+            }
+        }
     }
 }
