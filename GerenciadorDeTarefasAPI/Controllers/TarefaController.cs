@@ -30,6 +30,7 @@ namespace GerenciadorDeTarefas.Controllers
             }
             catch (System.Exception)
             {
+                HttpContext.Response.StatusCode = 500;
                 return new JsonResult("Ocorreu um erro desconhecido!");
             }
         }
@@ -47,6 +48,25 @@ namespace GerenciadorDeTarefas.Controllers
             }
             catch (System.Exception)
             {
+                HttpContext.Response.StatusCode = 500;
+                return new JsonResult("Ocorreu um erro desconhecido!");
+            }
+        }
+
+        [HttpPost("Editar")]
+        public IActionResult Editar([FromForm]TarefaDTO tarefaDTO) 
+        {
+            try
+            {
+                ITarefaRepositorio tarefaRepositorio = new TarefaDAO(NhibernateHelper.OpenSession(configuration));
+                TarefaServico tarefaServico = new TarefaServico(tarefaRepositorio);
+                Tarefa tarefa = new Tarefa(){Nome = tarefaDTO.Nome,Id = tarefaDTO.Id};
+                tarefaServico.Editar(tarefa);
+                return Ok();
+            }
+            catch (System.Exception)
+            {
+                HttpContext.Response.StatusCode = 500;
                 return new JsonResult("Ocorreu um erro desconhecido!");
             }
         }
@@ -63,6 +83,7 @@ namespace GerenciadorDeTarefas.Controllers
             }
             catch (System.Exception)
             {
+                HttpContext.Response.StatusCode = 500;
                 return new JsonResult("Ocorreu um erro desconhecido!");
             }
         }
@@ -79,6 +100,7 @@ namespace GerenciadorDeTarefas.Controllers
             }
             catch (System.Exception)
             {
+                HttpContext.Response.StatusCode = 500;
                 return new JsonResult("Ocorreu um erro desconhecido!");
             }
         }

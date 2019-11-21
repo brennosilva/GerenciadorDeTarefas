@@ -22,6 +22,15 @@ namespace GerenciadorDeTarefas.Infraestrutura.DAO
             session.Transaction.Commit();
         }
 
+        public void Editar(Tarefa NovaTarefa)
+        {
+            var tarefa = session.Get<Tarefa>(NovaTarefa.Id);
+            tarefa.Nome = NovaTarefa.Nome;
+            session.Transaction.Begin();
+            session.SaveOrUpdate(tarefa);
+            session.Transaction.Commit();
+        }
+
         public IList<Tarefa> ListarTarefasUsuario(int idUsuario)
         {
             return session.QueryOver<Tarefa>().Where(x => x.Usuario.Id == idUsuario).List();

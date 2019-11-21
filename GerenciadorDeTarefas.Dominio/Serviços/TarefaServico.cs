@@ -14,6 +14,11 @@ namespace GerenciadorDeTarefas.Dominio.Serviços
             repositorio.Salvar(NovaTarefa);
         }
 
+         public void Editar(Tarefa NovaTarefa)
+        {
+            repositorio.Editar(NovaTarefa);
+        }
+
         public void Deletar(int IdTarefa)
         {
             repositorio.Deletar(IdTarefa);
