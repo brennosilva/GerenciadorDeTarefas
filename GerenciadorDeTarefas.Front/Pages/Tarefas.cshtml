@@ -168,7 +168,7 @@
         }
 
         function listarTarefas() {
-            var usuarioLogado = 1
+            var usuarioLogado = getCookie("username");
             $.ajax({
                 processData: true,
                 type: 'GET',
@@ -206,7 +206,7 @@
 
         $("#novaTarefa").submit(function (e) {
             var form = $("#novaTarefa");
-            var usuarioLogado = 1;
+            var usuarioLogado = getCookie("username");
             $.post("http://localhost:5000/api/Tarefa/NovaTarefa", { nome: $("#nomeTarefa").val(), idUsuario: usuarioLogado })
                 .done(function (data) {
                     $('#modalTarefa').modal('hide')
