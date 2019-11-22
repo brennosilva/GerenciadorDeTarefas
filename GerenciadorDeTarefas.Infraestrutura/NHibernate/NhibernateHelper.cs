@@ -11,11 +11,24 @@ namespace GerenciadorDeTarefas.Infraestrutura.NHibernate
         public static ISession OpenSession(IConfiguration configuration)
         {
             var connectionString = configuration.GetConnectionString("TAREFA");
-            ISessionFactory sessionFactory = Fluently.Configure()
+            var banco = configuration.GetSection("BANCO").Get<string>();
+
+            if (banco == "ORACLE")
+            {
+                ISessionFactory sessionFactory = Fluently.Configure()
                 .Database(OracleManagedDataClientConfiguration.Oracle10.ConnectionString(connectionString))
                 .Mappings(m => m.FluentMappings.AddFromAssemblyOf<TarefaMap>())
                 .BuildSessionFactory();
-            return sessionFactory.OpenSession();
+                return sessionFactory.OpenSession();
+            }
+            else
+            {
+                ISessionFactory sessionFactory = Fluently.Configure()
+                .Database(MsSqlConfiguration.MsSql2012.ConnectionString(connectionString))
+                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<TarefaMap>())
+                .BuildSessionFactory();
+                return sessionFactory.OpenSession();
+            }
         }
 
     }
