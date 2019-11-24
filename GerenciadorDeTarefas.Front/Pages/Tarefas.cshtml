@@ -1,10 +1,9 @@
 ﻿@page
 <!-- Modal -->
-    <div class="modal fade" id="modalTarefa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal"  id="modalTarefa" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
+            <div class="modal-header">    
                     <h5 class="modal-title" id="exampleModalLabel">Nova Tarefa</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -27,7 +26,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modalEditarTarefa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal" id="modalEditarTarefa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -209,7 +208,9 @@
             var usuarioLogado = getCookie("username");
             $.post("http://localhost:5000/api/Tarefa/NovaTarefa", { nome: $("#nomeTarefa").val(), idUsuario: usuarioLogado })
                 .done(function (data) {
-                    $('#modalTarefa').modal('hide')
+                    $("#modalTarefa").removeClass("in");
+                    $(".modal-backdrop").remove();
+                      $('#modalTarefa').modal("hide");
                     swal({
                         title: 'Tarefa criada com sucesso!',
                         icon: 'success',
@@ -217,7 +218,7 @@
                         cancelButtonColor: '#d33',
                         confirmButtonText: 'Ok'
                     }).then(function (result) {
-                        listarTarefas();
+                        listarTarefas();                      
                     })
                 });
             e.preventDefault();
@@ -269,7 +270,9 @@
             var idTarefaEditar = $("#idTarefa").val();
             $.post("http://localhost:5000/api/Tarefa/Editar", { nome: $("#nomeNovaTarefa").val(), id: idTarefaEditar })
                 .done(function (data) {
-                    $('#modalEditarTarefa').modal('hide')
+                    $("#modalEditarTarefa").removeClass("in");
+                    $(".modal-backdrop").remove();
+                    $('#modalEditarTarefa').modal("hide");
                     swal({
                         title: 'Tarefa editada com sucesso!',
                         icon: 'success',
@@ -277,7 +280,7 @@
                         cancelButtonColor: '#d33',
                         confirmButtonText: 'Ok'
                     }).then(function (result) {
-                        listarTarefas();
+                        listarTarefas();                        
                     })
                 });
             e.preventDefault();
