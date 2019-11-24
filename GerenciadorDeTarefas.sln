@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerenciadorDeTarefas.Domini
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerenciadorDeTarefasAPI", "GerenciadorDeTarefasAPI\GerenciadorDeTarefasAPI.csproj", "{85F6D742-AF76-45A8-8142-2EC222AF2DFE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerenciadorDeTarefas.Apresentacao", "GerenciadorDeTarefas.Apresentacao\GerenciadorDeTarefas.Apresentacao.csproj", "{1D93098A-8EFC-4F32-8701-AC71E2132BA1}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
